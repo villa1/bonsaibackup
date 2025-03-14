@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 
 export interface BlogPost {
@@ -24,12 +23,11 @@ export interface BlogPost {
 
 export async function fetchBlogPosts(): Promise<BlogPost[]> {
   try {
-    // Simulate Hugo's content structure with organized directories
-    // In Hugo, content is organized by sections (directories under /content/)
+    // Moved blog files to public folder for easier access
     const blogFiles = [
-      '/src/data/blog/python-programming.md',
-      '/src/data/blog/understanding-cites.md',
-      '/src/data/blog/global-bonsai-trends.md',
+      '/blog/python-programming.md',
+      '/blog/understanding-cites.md',
+      '/blog/global-bonsai-trends.md',
       // Add new blog files here
     ];
     

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 
 // This component generates an XML sitemap for search engines
@@ -8,22 +7,8 @@ const XmlSitemapPage = () => {
   const today = new Date().toISOString().split('T')[0];
   
   useEffect(() => {
-    // Use the sitemap.md data directly from the src path
-    fetch('/src/data/sitemap.md')
-      .then(response => {
-        if (!response.ok) {
-          // Try alternate path if first attempt fails
-          return fetch('./src/data/sitemap.md');
-        }
-        return response;
-      })
-      .then(response => {
-        if (!response.ok) {
-          // As a fallback, try direct relative path to data
-          return fetch('../data/sitemap.md');
-        }
-        return response;
-      })
+    // Moved to public folder for better accessibility
+    fetch('/sitemap.md')
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to fetch sitemap markdown');
