@@ -1,7 +1,4 @@
 
-import { useEffect } from 'react';
-import Navbar from '../components/layout/Navbar';
-import Footer from '../components/layout/Footer';
 import Hero from '../components/home/Hero';
 import About from '../components/home/About';
 import Services from '../components/home/Services';
@@ -9,9 +6,11 @@ import WhyChooseUs from '../components/home/WhyChooseUs';
 import Process from '../components/home/Process';
 import Reviews from '../components/home/Reviews';
 import Contact from '../components/home/Contact';
+import { useEffect } from 'react';
 
-const Index = () => {
-  // Intersection Observer for animation
+// This acts like Hugo's index.html template
+const HomePage = () => {
+  // Animation observer (kept from original)
   useEffect(() => {
     const observerOptions = {
       root: null,
@@ -49,20 +48,16 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="overflow-x-hidden">
-      <Navbar />
-      <main>
-        <Hero />
-        <Services />
-        <WhyChooseUs />
-        <Process />
-        <About />
-        <Reviews />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <Hero />
+      <Services />
+      <WhyChooseUs />
+      <Process />
+      <About />
+      <Reviews />
+      <Contact />
+    </>
   );
 };
 
-export default Index;
+export default HomePage;
