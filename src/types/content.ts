@@ -7,7 +7,7 @@ export interface ContentItem {
   type: ContentType;
   parent: string | null;
   content?: string;
-  children?: ContentItem[];
+  children?: string[]; // Changed from ContentItem[] to string[] to store IDs
 }
 
 export interface ContentTree {

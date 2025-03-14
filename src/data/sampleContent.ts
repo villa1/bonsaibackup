@@ -218,7 +218,7 @@ Feel free to reach out to us at example@example.com or visit our [website](https
 // Helper function to get children of a content item
 export const getChildren = (id: string): ContentItem[] => {
   const item = sampleContentTree[id];
-  if (!item.children) return [];
+  if (!item || !item.children) return [];
   
   return item.children.map(childId => sampleContentTree[childId]);
 };
@@ -230,8 +230,11 @@ export const getContentPath = (id: string): ContentItem[] => {
   
   while (currentId) {
     const item = sampleContentTree[currentId];
+    if (!item) break;
+    
     path.unshift(item);
     currentId = item.parent as string;
+    if (!currentId) break; // Break if we've reached the root
   }
   
   return path;
