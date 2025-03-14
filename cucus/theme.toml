@@ -1,0 +1,13 @@
+
+name = "Indo Cipanas Bonsai"
+license = "MIT"
+licenselink = "https://github.com/yourusername/hugo-indo-cipanas-bonsai/blob/master/LICENSE"
+description = "A premium Hugo theme for bonsai and tropical plant businesses"
+homepage = "https://github.com/yourusername/hugo-indo-cipanas-bonsai"
+tags = ["business", "responsive", "blog", "tailwind", "plants", "bonsai"]
+features = ["responsive", "blog", "tailwind"]
+min_version = "0.80.0"
+
+[author]
+  name = "Your Name"
+  homepage = "https://yourwebsite.com/"

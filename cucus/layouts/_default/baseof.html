@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
+
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap">
+
+  <!-- Styles -->
+  {{ $css := resources.Get "css/main.css" | resources.PostCSS }}
+  {{ if hugo.IsProduction }}
+    {{ $css = $css | minify | fingerprint | resources.PostProcess }}
+  {{ end }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+</head>
+<body class="bg-background text-foreground font-opensans">
+  <div class="overflow-x-hidden min-h-screen flex flex-col">
+    {{ partial "layout/navbar.html" . }}
+    
+    <main class="{{ if not .IsHome }}pt-24{{ end }}">
+      {{ block "main" . }}{{ end }}
+    </main>
+
+    {{ partial "layout/footer.html" . }}
+
+    {{ $js := resources.Get "js/main.js" | js.Build "js/main.js" }}
+    {{ if hugo.IsProduction }}
+      {{ $js = $js | minify | fingerprint }}
+    {{ end }}
+    <script src="{{ $js.RelPermalink }}"></script>
+  </div>
+</body>
+</html>

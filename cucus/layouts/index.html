@@ -1,0 +1,43 @@
+
+{{ define "main" }}
+  {{ partial "home/hero.html" . }}
+  {{ partial "home/services.html" . }}
+  {{ partial "home/why-choose-us.html" . }}
+  {{ partial "home/process.html" . }}
+  {{ partial "home/about.html" . }}
+  {{ partial "home/reviews.html" . }}
+  {{ partial "home/contact.html" . }}
+
+  <!-- Animation Observer for Sections -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const elements = entry.target.querySelectorAll('.opacity-0');
+            elements.forEach(element => {
+              if (element instanceof HTMLElement) {
+                if (element.style.animationDelay === '') {
+                  element.style.animationDelay = '0.2s';
+                }
+              }
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all sections
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
+{{ end }}

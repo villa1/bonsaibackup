@@ -1,0 +1,18 @@
+
+<div class="mb-12 {{ if eq .alignment "left" }}text-left{{ else if eq .alignment "right" }}text-right{{ else }}text-center{{ end }} {{ with .className }}{{ . }}{{ end }}">
+  <div class="opacity-0 animate-fade-in">
+    <span class="inline-block uppercase tracking-wider text-sm font-semibold mb-2 {{ if in (default "" .className) "text-white" }}text-white/80{{ else }}text-bonsai-olive{{ end }}">
+      {{ .subtitle }}
+    </span>
+  </div>
+  <h2 class="opacity-0 animate-fade-in-delay-1 text-3xl md:text-4xl lg:text-5xl font-playfair font-bold {{ if in (default "" .className) "text-white" }}text-white{{ else }}text-bonsai-dark-green{{ end }}">
+    {{ .title }}
+  </h2>
+  <div class="opacity-0 animate-fade-in-delay-2 w-20 h-1 mt-4 mb-4 rounded-full mx-auto {{ if in (default "" .className) "text-white" }}bg-bonsai-wheat/70{{ else }}bg-bonsai-wheat{{ end }}"></div>
+  
+  {{ with .description }}
+    <p class="opacity-0 animate-fade-in-delay-3 max-w-2xl mx-auto mt-4 {{ if in (default "" $.className) "text-white" }}text-white/90{{ else }}text-gray-600{{ end }}">
+      {{ . }}
+    </p>
+  {{ end }}
+</div>

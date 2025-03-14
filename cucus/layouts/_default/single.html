@@ -1,0 +1,31 @@
+
+{{ define "main" }}
+  <!-- Breadcrumbs -->
+  <div class="bg-bonsai-beige/50 py-3">
+    <div class="container-custom mx-auto">
+      <div class="flex items-center text-sm text-gray-600">
+        <a href="/" class="hover:text-bonsai-dark-green transition-colors">Home</a>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        {{ with .Section }}
+          <a href="/{{ . }}" class="hover:text-bonsai-dark-green transition-colors">{{ humanize . }}</a>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        {{ end }}
+        <span class="text-bonsai-dark-green font-medium">{{ .Title }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-custom mx-auto py-12">
+    {{ if eq .Section "blog" }}
+      {{ partial "blog/blog-single.html" . }}
+    {{ else }}
+      <article class="max-w-4xl mx-auto bg-white rounded-xl shadow-xl p-6 md:p-10">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-playfair font-bold text-bonsai-dark-green mb-6">{{ .Title }}</h1>
+        
+        <div class="prose max-w-none">
+          {{ .Content }}
+        </div>
+      </article>
+    {{ end }}
+  </div>
+{{ end }}
