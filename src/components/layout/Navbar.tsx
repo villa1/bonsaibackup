@@ -50,7 +50,7 @@ const Navbar = () => {
     >
       <div className="container-custom mx-auto flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center">
+        <Link to="/" className="flex items-center">
           <Leaf className="h-8 w-8 text-bonsai-dark-green mr-2" />
           <div>
             <h1 className="text-xl md:text-2xl font-playfair font-bold text-bonsai-dark-green">
@@ -58,7 +58,7 @@ const Navbar = () => {
             </h1>
             <p className="text-[10px] md:text-xs text-bonsai-brown tracking-wider">PREMIUM BONSAI CULTIVATION</p>
           </div>
-        </div>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">

@@ -8,12 +8,19 @@ const XmlSitemapPage = () => {
   const today = new Date().toISOString().split('T')[0];
   
   useEffect(() => {
-    // Fetch and parse the Markdown file - using a relative path that works in both dev and production
-    fetch('./src/data/sitemap.md')
+    // Use the sitemap.md data directly from the src path
+    fetch('/src/data/sitemap.md')
       .then(response => {
         if (!response.ok) {
           // Try alternate path if first attempt fails
-          return fetch('/src/data/sitemap.md');
+          return fetch('./src/data/sitemap.md');
+        }
+        return response;
+      })
+      .then(response => {
+        if (!response.ok) {
+          // As a fallback, try direct relative path to data
+          return fetch('../data/sitemap.md');
         }
         return response;
       })
@@ -35,12 +42,25 @@ const XmlSitemapPage = () => {
       })
       .catch(error => {
         console.error('Error loading sitemap paths:', error);
-        // Fallback to a minimal set of routes if the markdown fails to load
+        // Fallback to routes from sitemap.md directly
         setRoutes([
           '/',
           '/services',
+          '/services-catalog',
           '/about',
           '/contact',
+          '/export-process',
+          '/sustainability',
+          '/faq',
+          '/testimonials',
+          '/blog',
+          '/partners',
+          '/press',
+          '/privacy-policy',
+          '/terms-of-service',
+          '/cookie-policy',
+          '/accessibility',
+          '/return-policy',
           '/sitemap'
         ]);
       });
