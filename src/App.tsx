@@ -20,6 +20,7 @@ import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
 import SitemapPage from "./pages/SitemapPage";
 import XmlSitemapPage from "./pages/XmlSitemapPage";
+import TestimonialsPage from "./pages/TestimonialsPage";
 
 // Create query client
 const queryClient = new QueryClient();
@@ -47,7 +48,7 @@ const App = () => (
           <Route path="/export-process" element={<SingleLayout section="export-process"><SinglePage slug="export-process" /></SingleLayout>} />
           <Route path="/sustainability" element={<SingleLayout section="sustainability"><SinglePage slug="sustainability" /></SingleLayout>} />
           <Route path="/faq" element={<SingleLayout section="faq"><SinglePage slug="faq" /></SingleLayout>} />
-          <Route path="/testimonials" element={<SingleLayout section="testimonials"><SinglePage slug="testimonials" /></SingleLayout>} />
+          <Route path="/testimonials" element={<TestimonialsPage />} />
           <Route path="/partners" element={<SingleLayout section="partners"><SinglePage slug="partners" /></SingleLayout>} />
           <Route path="/press" element={<SingleLayout section="press"><SinglePage slug="press" /></SingleLayout>} />
           <Route path="/contact" element={<SingleLayout section="contact"><SinglePage slug="contact" /></SingleLayout>} />

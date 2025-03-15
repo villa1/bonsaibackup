@@ -6,7 +6,7 @@ import DefaultLayout from '../layouts/DefaultLayout';
 
 const TestimonialsPage = () => {
   return (
-    <div className="min-h-screen">
+    <DefaultLayout>
       <div className="container-custom mx-auto py-12">
         <SectionTitle
           subtitle="CUSTOMER TESTIMONIALS"
@@ -44,7 +44,7 @@ const TestimonialsPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </DefaultLayout>
   );
 };
 
