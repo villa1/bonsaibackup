@@ -1,5 +1,7 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { ChevronRight } from 'lucide-react';
 import SectionTitle from '../components/ui/SectionTitle';
 import Reviews from '../components/home/Reviews';
 import DefaultLayout from '../layouts/DefaultLayout';
@@ -7,6 +9,17 @@ import DefaultLayout from '../layouts/DefaultLayout';
 const TestimonialsPage = () => {
   return (
     <DefaultLayout>
+      {/* Breadcrumbs */}
+      <div className="bg-bonsai-beige/50 py-3">
+        <div className="container-custom mx-auto">
+          <div className="flex items-center text-sm text-gray-600">
+            <Link to="/" className="hover:text-bonsai-dark-green transition-colors">Home</Link>
+            <ChevronRight size={14} className="mx-2" />
+            <span className="text-bonsai-dark-green font-medium">Testimonials</span>
+          </div>
+        </div>
+      </div>
+      
       <div className="container-custom mx-auto py-12">
         <SectionTitle
           subtitle="CUSTOMER TESTIMONIALS"
