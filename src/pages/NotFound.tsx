@@ -3,7 +3,7 @@ import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
-import { Home, Search, HelpCircle } from 'lucide-react';
+import { Home, Search, HelpCircle, MapPin, Book, Leaf } from 'lucide-react';
 
 const NotFound = () => {
   const location = useLocation();
@@ -15,12 +15,14 @@ const NotFound = () => {
     );
   }, [location.pathname]);
 
-  // Suggested pages that might help the user
+  // More comprehensive suggested pages to help the user
   const suggestedPages = [
     { title: "Home Page", path: "/", icon: <Home size={18} /> },
     { title: "Services", path: "/services", icon: <Search size={18} /> },
+    { title: "Blog", path: "/blog", icon: <Book size={18} /> },
+    { title: "About Us", path: "/about", icon: <Leaf size={18} /> },
+    { title: "Contact Us", path: "/contact", icon: <MapPin size={18} /> },
     { title: "FAQ", path: "/faq", icon: <HelpCircle size={18} /> },
-    { title: "Contact Us", path: "/contact", icon: <HelpCircle size={18} /> },
   ];
 
   return (

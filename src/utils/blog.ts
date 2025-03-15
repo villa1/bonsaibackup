@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 
 export interface BlogPost {
@@ -37,6 +38,11 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
     for (const filePath of blogFiles) {
       try {
         const response = await fetch(filePath);
+        if (!response.ok) {
+          console.error(`Failed to fetch ${filePath}: ${response.status} ${response.statusText}`);
+          continue;
+        }
+        
         const text = await response.text();
         
         // Parse frontmatter (metadata) and content (similar to Hugo's front matter)
@@ -50,18 +56,67 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
         const section = pathParts[pathParts.length - 2] || 'blog';
         
         posts.push({
+          id: posts.length + 1, // Ensure unique ID
           ...frontmatter as unknown as BlogPost,
           content,
           slug,
           section,
           // Default layout if not specified in frontmatter
           layout: frontmatter.layout || 'single',
-          type: frontmatter.type || 'post'
+          type: frontmatter.type || 'post',
+          // Add default values for required fields if not present
+          title: frontmatter.title || 'Untitled',
+          excerpt: frontmatter.excerpt || '',
+          category: frontmatter.category || 'General',
+          author: frontmatter.author || 'Admin',
+          authorRole: frontmatter.authorRole || '',
+          date: frontmatter.date || new Date().toISOString().split('T')[0],
+          readTime: frontmatter.readTime || '5 min read',
+          image: frontmatter.image || '/placeholder.svg',
+          featured: frontmatter.featured || false
         });
       } catch (error) {
         console.error(`Error loading content file ${filePath}:`, error);
       }
     }
+    
+    // For static pages, create placeholder content
+    const staticPages = [
+      { slug: 'about', title: 'About Us', section: 'about' },
+      { slug: 'export-process', title: 'Export Process', section: 'export-process' },
+      { slug: 'sustainability', title: 'Sustainability', section: 'sustainability' },
+      { slug: 'faq', title: 'Frequently Asked Questions', section: 'faq' },
+      { slug: 'testimonials', title: 'Testimonials', section: 'testimonials' },
+      { slug: 'partners', title: 'Our Partners', section: 'partners' },
+      { slug: 'press', title: 'Press Releases', section: 'press' },
+      { slug: 'contact', title: 'Contact Us', section: 'contact' },
+      { slug: 'privacy-policy', title: 'Privacy Policy', section: 'legal' },
+      { slug: 'terms-of-service', title: 'Terms of Service', section: 'legal' },
+      { slug: 'cookie-policy', title: 'Cookie Policy', section: 'legal' },
+      { slug: 'accessibility', title: 'Accessibility', section: 'legal' },
+      { slug: 'return-policy', title: 'Return Policy', section: 'legal' },
+    ];
+    
+    // Add static pages to posts array
+    staticPages.forEach((page, index) => {
+      posts.push({
+        id: 1000 + index, // Ensure unique ID different from blog posts
+        title: page.title,
+        slug: page.slug,
+        section: page.section,
+        excerpt: `This is the ${page.title} page`,
+        category: 'Page',
+        author: 'Admin',
+        authorRole: '',
+        date: new Date().toISOString().split('T')[0],
+        readTime: '',
+        image: '/placeholder.svg',
+        featured: false,
+        content: `# ${page.title}\n\nContent for the ${page.title} page will be displayed here.`,
+        layout: 'single',
+        type: 'page'
+      });
+    });
     
     // Sort by date (newest first) or by weight if available (Hugo convention)
     return posts.sort((a, b) => {
