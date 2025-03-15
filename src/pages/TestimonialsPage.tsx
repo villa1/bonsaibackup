@@ -2,7 +2,7 @@
 import React from 'react';
 import SectionTitle from '../components/ui/SectionTitle';
 import Reviews from '../components/home/Reviews';
-import { DefaultLayout } from '../layouts/DefaultLayout';
+import DefaultLayout from '../layouts/DefaultLayout';
 
 const TestimonialsPage = () => {
   return (
