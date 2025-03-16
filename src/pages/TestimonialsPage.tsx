@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, MessageSquare, Star, Award, Users, Globe } from 'lucide-react';
+import { ChevronRight, MessageSquare, Star, Award, Users, Globe, Leaf } from 'lucide-react';
 import SectionTitle from '../components/ui/SectionTitle';
 import Reviews from '../components/home/Reviews';
 import DefaultLayout from '../layouts/DefaultLayout';
