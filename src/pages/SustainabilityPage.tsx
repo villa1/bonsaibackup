@@ -1,303 +1,198 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Navbar from '../components/layout/Navbar';
-import Footer from '../components/layout/Footer';
+import SingleLayout from '../layouts/SingleLayout';
 import SectionTitle from '../components/ui/SectionTitle';
-import { ChevronRight, Leaf, Users, Recycle, CheckCircle, Shield } from 'lucide-react';
+import { Leaf, Recycle, Users, BarChart3, Shield, Globe } from 'lucide-react';
 
 const SustainabilityPage = () => {
+  const sustainabilityPillars = [
+    {
+      title: "Ethical Sourcing",
+      icon: <Shield className="h-10 w-10 text-bonsai-olive mb-4" />,
+      description: "We ensure all our plants are legally and ethically sourced, maintaining strict compliance with CITES regulations and Indonesian forestry laws. We never collect from protected areas or endangered populations."
+    },
+    {
+      title: "Community Empowerment",
+      icon: <Users className="h-10 w-10 text-bonsai-olive mb-4" />,
+      description: "We partner with local farmers and artisans, providing fair compensation and ongoing training. This creates sustainable livelihoods while preserving traditional knowledge and techniques."
+    },
+    {
+      title: "Environmental Stewardship",
+      icon: <Leaf className="h-10 w-10 text-bonsai-olive mb-4" />,
+      description: "Our nurseries implement water conservation, organic growing methods, and integrated pest management. We maintain forest buffer zones and practice habitat restoration in our growing areas."
+    },
+    {
+      title: "Resource Efficiency",
+      icon: <Recycle className="h-10 w-10 text-bonsai-olive mb-4" />,
+      description: "We utilize rainwater harvesting, solar power, and composting systems. Our packaging incorporates biodegradable and recycled materials to minimize environmental impact during shipping."
+    }
+  ];
+
+  const sustainabilityMetrics = [
+    { label: "Reduction in water usage", value: "35%", period: "since 2020" },
+    { label: "Solar power utilization", value: "60%", period: "of our energy needs" },
+    { label: "Community farmers supported", value: "120+", period: "across Indonesia" },
+    { label: "Trees planted for reforestation", value: "5,000+", period: "annually" }
+  ];
+
+  const certifications = [
+    {
+      name: "CITES Certified",
+      description: "Full compliance with the Convention on International Trade in Endangered Species of Wild Fauna and Flora."
+    },
+    {
+      name: "Indonesian Export License",
+      description: "Officially approved by the Indonesian government for plant export with all required permits."
+    },
+    {
+      name: "Sustainable Trade Certification",
+      description: "Verified commitment to ethical sourcing, fair labor practices, and environmental stewardship."
+    },
+    {
+      name: "Carbon Reduction Initiative",
+      description: "Active participation in carbon offset programs and emissions reduction strategies."
+    }
+  ];
+
   return (
-    <div className="pt-24">
-      <Navbar />
-      <main className="min-h-screen">
-        {/* Breadcrumbs */}
-        <div className="bg-bonsai-beige/50 py-3">
-          <div className="container-custom mx-auto">
-            <div className="flex items-center text-sm text-gray-600">
-              <Link to="/" className="hover:text-bonsai-dark-green transition-colors">Home</Link>
-              <ChevronRight size={14} className="mx-2" />
-              <span className="text-bonsai-dark-green font-medium">Sustainability & Ethics</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Hero Section */}
-        <div className="relative py-16 bg-bonsai-beige/30">
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-bonsai-wheat/20 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-bonsai-olive/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
-          </div>
-          
-          <div className="container-custom mx-auto relative z-10">
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-playfair font-bold text-bonsai-dark-green mb-6">
-                Our Commitment to Sustainability
-              </h1>
-              <p className="text-lg text-gray-700 mb-8">
-                At Indo Cipanas Bonsai, we believe that responsible cultivation and ethical business practices are essential to preserving our natural heritage while supporting local communities.
+    <SingleLayout section="sustainability">
+      <div className="container-custom mx-auto py-12">
+        <SectionTitle
+          subtitle="OUR COMMITMENT"
+          title="Sustainable Practices"
+          description="At Indo Cipanas Bonsai, sustainability isn't just a buzzword—it's fundamental to our business model and values. We are committed to environmental stewardship, community support, and ethical business practices in everything we do."
+        />
+        
+        {/* Hero image */}
+        <div className="mt-8 mb-16 rounded-xl overflow-hidden h-[400px] relative">
+          <img 
+            src="/placeholder.svg" 
+            alt="Indo Cipanas sustainable nursery practices" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-bonsai-dark-green/70 to-transparent flex items-center">
+            <div className="max-w-md ml-8 md:ml-16 text-white">
+              <h2 className="text-3xl font-playfair font-bold mb-4">Growing With Purpose</h2>
+              <p>
+                Our sustainability journey encompasses every aspect of our operation, 
+                from how we cultivate our plants to how we engage with communities and 
+                deliver our products to customers worldwide.
               </p>
-              <div className="flex justify-center">
-                <div className="w-20 h-1 bg-bonsai-olive"></div>
-              </div>
             </div>
           </div>
         </div>
-
-        <div className="container-custom mx-auto py-16">
-          {/* Ethical Sourcing */}
-          <div className="mb-20">
-            <div className="flex items-center mb-6">
-              <Leaf className="w-10 h-10 p-2 rounded-full bg-bonsai-olive/20 text-bonsai-olive mr-4" />
-              <h2 className="text-2xl font-playfair font-bold text-bonsai-dark-green">Ethical Sourcing</h2>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div>
-                <p className="text-gray-700 mb-4">
-                  We are committed to sustainable sourcing practices that protect Indonesia's rich botanical diversity. All our plants are either nursery-grown or legally harvested with proper permits and documentation.
-                </p>
-                
-                <p className="text-gray-700 mb-6">
-                  Our nurseries implement regenerative growing methods that minimize environmental impact while producing healthy, vibrant plants. For each mature tree harvested, we plant multiple seedlings to ensure the continued health of forest ecosystems.
-                </p>
-                
-                <div className="space-y-4">
-                  <div className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-bonsai-olive mr-3 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="font-bold text-bonsai-dark-green">Nursery-Grown Focus</h4>
-                      <p className="text-sm text-gray-600">95% of our plants are cultivated in controlled nursery environments.</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-bonsai-olive mr-3 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="font-bold text-bonsai-dark-green">Legal Compliance</h4>
-                      <p className="text-sm text-gray-600">We strictly adhere to CITES regulations and Indonesian forestry laws.</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-bonsai-olive mr-3 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="font-bold text-bonsai-dark-green">Documented Provenance</h4>
-                      <p className="text-sm text-gray-600">Every plant's origin is tracked and documented to ensure ethical sourcing.</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-bonsai-olive mr-3 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="font-bold text-bonsai-dark-green">Reforestation Program</h4>
-                      <p className="text-sm text-gray-600">5% of our profits support local reforestation initiatives in West Java.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1582071002107-f47a0e4ff363?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                  alt="Sustainable plant nursery" 
-                  className="rounded-lg shadow-lg w-full h-auto object-cover"
-                />
-                <div className="absolute -bottom-6 -right-6 w-2/3 h-1/3 bg-bonsai-olive/20 rounded-lg -z-10 transform rotate-3"></div>
+        
+        {/* Sustainability pillars */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          {sustainabilityPillars.map((pillar, index) => (
+            <div key={index} className="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+              <div className="flex flex-col items-center text-center">
+                {pillar.icon}
+                <h3 className="text-xl font-semibold text-bonsai-dark-green mb-3">{pillar.title}</h3>
+                <p className="text-gray-600">{pillar.description}</p>
               </div>
             </div>
-          </div>
+          ))}
+        </div>
+        
+        {/* Metrics section */}
+        <div className="bg-bonsai-beige/20 rounded-xl p-8 mb-16">
+          <h2 className="text-2xl font-playfair font-bold text-bonsai-dark-green text-center mb-8">Our Impact by the Numbers</h2>
           
-          {/* Community Impact */}
-          <div className="mb-20">
-            <div className="flex items-center mb-6">
-              <Users className="w-10 h-10 p-2 rounded-full bg-bonsai-olive/20 text-bonsai-olive mr-4" />
-              <h2 className="text-2xl font-playfair font-bold text-bonsai-dark-green">Community Impact</h2>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div className="order-2 md:order-1 relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1593791211660-9123e50ce89a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
-                  alt="Local farmers in Indonesia" 
-                  className="rounded-lg shadow-lg w-full h-auto object-cover"
-                />
-                <div className="absolute -top-6 -left-6 w-2/3 h-1/3 bg-bonsai-wheat/30 rounded-lg -z-10 transform -rotate-3"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {sustainabilityMetrics.map((metric, index) => (
+              <div key={index} className="bg-white rounded-lg p-6 text-center">
+                <BarChart3 className="h-10 w-10 text-bonsai-olive mx-auto mb-3" />
+                <span className="block text-3xl font-bold text-bonsai-dark-green mb-1">{metric.value}</span>
+                <span className="block text-sm text-bonsai-olive mb-2">{metric.period}</span>
+                <p className="text-gray-600 text-sm">{metric.label}</p>
               </div>
-              
-              <div className="order-1 md:order-2">
-                <p className="text-gray-700 mb-4">
-                  We believe in building lasting partnerships with local communities. Our business model directly supports Indonesian farmers and artisans, providing fair wages and sustainable livelihoods while preserving traditional horticultural knowledge.
-                </p>
-                
-                <p className="text-gray-700 mb-6">
-                  Rather than operating as middlemen, we integrate local growers into our supply chain, providing training, resources, and market access. This approach ensures higher income for farmers while maintaining exceptional quality standards.
-                </p>
-                
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="glass-card p-4 text-center">
-                    <div className="text-2xl font-bold text-bonsai-olive">50+</div>
-                    <div className="text-sm text-gray-600">Local families supported</div>
-                  </div>
-                  
-                  <div className="glass-card p-4 text-center">
-                    <div className="text-2xl font-bold text-bonsai-olive">35%</div>
-                    <div className="text-sm text-gray-600">Higher than average wages</div>
-                  </div>
-                  
-                  <div className="glass-card p-4 text-center">
-                    <div className="text-2xl font-bold text-bonsai-olive">12</div>
-                    <div className="text-sm text-gray-600">Villages in partnership</div>
-                  </div>
-                  
-                  <div className="glass-card p-4 text-center">
-                    <div className="text-2xl font-bold text-bonsai-olive">200+</div>
-                    <div className="text-sm text-gray-600">Hours of training annually</div>
-                  </div>
-                </div>
-                
-                <div className="bg-bonsai-beige/30 p-4 rounded-lg">
-                  <h4 className="font-bold text-bonsai-dark-green mb-2">Farmer Partnership Program</h4>
-                  <p className="text-sm text-gray-700">
-                    Our Farmer Partnership Program provides technical training, quality seedlings, and guaranteed purchase agreements to local growers. This program has increased average household incomes by 35% in participating communities.
-                  </p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
-          
-          {/* Environmental Practices */}
-          <div className="mb-16">
-            <div className="flex items-center mb-6">
-              <Recycle className="w-10 h-10 p-2 rounded-full bg-bonsai-olive/20 text-bonsai-olive mr-4" />
-              <h2 className="text-2xl font-playfair font-bold text-bonsai-dark-green">Environmental Practices</h2>
-            </div>
-            
-            <p className="text-gray-700 mb-8 max-w-3xl">
-              Our commitment to the environment extends throughout our operations. We continuously work to reduce our ecological footprint while promoting biodiversity and resource conservation.
+        </div>
+        
+        {/* Community impact */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          <div>
+            <h2 className="text-2xl font-playfair font-bold text-bonsai-dark-green mb-6">Community Impact</h2>
+            <p className="text-gray-600 mb-4">
+              Our business model is built on supporting local communities. We work directly 
+              with farmers and artisans throughout Indonesia, providing fair compensation, 
+              training, and long-term partnerships.
             </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="glass-card p-6">
-                <h3 className="text-xl font-playfair font-bold text-bonsai-dark-green mb-4">Sustainable Cultivation</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <Shield className="w-5 h-5 text-bonsai-olive mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">Organic growing methods with minimal chemical inputs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Shield className="w-5 h-5 text-bonsai-olive mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">Integrated pest management to reduce pesticide use</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Shield className="w-5 h-5 text-bonsai-olive mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">Water-efficient irrigation systems to minimize waste</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Shield className="w-5 h-5 text-bonsai-olive mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">Native species preservation and propagation</span>
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="glass-card p-6">
-                <h3 className="text-xl font-playfair font-bold text-bonsai-dark-green mb-4">Resource Conservation</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <Shield className="w-5 h-5 text-bonsai-olive mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">Rainwater harvesting systems across our facilities</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Shield className="w-5 h-5 text-bonsai-olive mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">Solar power for 60% of our energy needs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Shield className="w-5 h-5 text-bonsai-olive mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">Composting program for organic waste recycling</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Shield className="w-5 h-5 text-bonsai-olive mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">Biodegradable packaging materials</span>
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="glass-card p-6">
-                <h3 className="text-xl font-playfair font-bold text-bonsai-dark-green mb-4">Education & Advocacy</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <Shield className="w-5 h-5 text-bonsai-olive mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">Public workshops on sustainable horticulture</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Shield className="w-5 h-5 text-bonsai-olive mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">School programs promoting plant conservation</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Shield className="w-5 h-5 text-bonsai-olive mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">Collaboration with conservation organizations</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Shield className="w-5 h-5 text-bonsai-olive mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">Support for policy development in plant protection</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          
-          {/* Certifications */}
-          <div className="bg-bonsai-beige/30 rounded-lg p-8 mb-16">
-            <h2 className="text-2xl font-playfair font-bold text-bonsai-dark-green mb-6 text-center">Our Certifications & Memberships</h2>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div className="bg-white p-4 rounded-lg flex flex-col items-center text-center">
-                <img src="https://cdn-icons-png.flaticon.com/512/1188/1188575.png" alt="Certification" className="w-16 h-16 mb-4" />
-                <h3 className="font-bold text-bonsai-dark-green">Sustainable Agriculture Certified</h3>
-              </div>
-              
-              <div className="bg-white p-4 rounded-lg flex flex-col items-center text-center">
-                <img src="https://cdn-icons-png.flaticon.com/512/1868/1868998.png" alt="Certification" className="w-16 h-16 mb-4" />
-                <h3 className="font-bold text-bonsai-dark-green">Indonesian Bonsai Association</h3>
-              </div>
-              
-              <div className="bg-white p-4 rounded-lg flex flex-col items-center text-center">
-                <img src="https://cdn-icons-png.flaticon.com/512/5609/5609509.png" alt="Certification" className="w-16 h-16 mb-4" />
-                <h3 className="font-bold text-bonsai-dark-green">Fair Trade Certified</h3>
-              </div>
-              
-              <div className="bg-white p-4 rounded-lg flex flex-col items-center text-center">
-                <img src="https://cdn-icons-png.flaticon.com/512/4924/4924484.png" alt="Certification" className="w-16 h-16 mb-4" />
-                <h3 className="font-bold text-bonsai-dark-green">Botanical Gardens Conservation International</h3>
-              </div>
-            </div>
-          </div>
-          
-          {/* Quote */}
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <div className="text-6xl font-serif text-bonsai-olive/20 mb-4">"</div>
-            <blockquote className="text-xl md:text-2xl font-playfair italic text-gray-700 mb-6">
-              Our mission extends beyond growing beautiful plants. We strive to cultivate a sustainable future where traditional horticultural practices thrive alongside modern conservation principles.
-            </blockquote>
-            <div className="font-bold text-bonsai-dark-green">Budi Santoso</div>
-            <div className="text-sm text-gray-600">Founder & Master Grower, Indo Cipanas Bonsai</div>
-          </div>
-          
-          {/* CTA */}
-          <div className="bg-gradient-to-r from-bonsai-dark-green to-bonsai-olive text-white rounded-lg p-8 text-center">
-            <h2 className="text-2xl font-playfair font-bold mb-4">Partner with a Sustainable Business</h2>
-            <p className="max-w-2xl mx-auto mb-6">
-              Choose Indo Cipanas Bonsai for ethically sourced, environmentally conscious plants and contribute to a more sustainable horticultural industry.
+            <p className="text-gray-600 mb-4">
+              Through our community development programs, we've helped establish sustainable 
+              livelihoods while preserving traditional cultivation techniques that have been 
+              passed down through generations.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link to="/contact" className="btn-secondary">Contact Us</Link>
-              <Link to="/our-process" className="btn-white">Learn Our Process</Link>
+            <p className="text-gray-600">
+              We regularly host workshops for local farmers on sustainable growing practices, 
+              business skills, and export requirements, empowering them to participate in the 
+              global market while maintaining environmental responsibility.
+            </p>
+          </div>
+          
+          <div className="rounded-xl overflow-hidden h-[300px]">
+            <img 
+              src="/placeholder.svg" 
+              alt="Indo Cipanas community work" 
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+        
+        {/* Certifications */}
+        <div className="mb-16">
+          <h2 className="text-2xl font-playfair font-bold text-bonsai-dark-green text-center mb-8">Our Certifications</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {certifications.map((cert, index) => (
+              <div key={index} className="flex p-4 border border-gray-200 rounded-lg">
+                <div className="bg-bonsai-beige/30 p-3 rounded-full mr-4">
+                  <Shield className="h-6 w-6 text-bonsai-olive" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-bonsai-dark-green">{cert.name}</h3>
+                  <p className="text-sm text-gray-600">{cert.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        {/* Future goals */}
+        <div className="bg-white rounded-xl shadow-md p-8 border border-gray-100">
+          <div className="flex flex-col md:flex-row items-center">
+            <Globe className="h-16 w-16 text-bonsai-olive mb-6 md:mb-0 md:mr-8" />
+            <div>
+              <h2 className="text-2xl font-playfair font-bold text-bonsai-dark-green mb-4">Our Future Commitments</h2>
+              <p className="text-gray-600 mb-4">
+                While we're proud of our achievements so far, we recognize that sustainability is a journey, 
+                not a destination. We're continually improving our practices and setting ambitious goals:
+              </p>
+              <ul className="space-y-2 text-gray-600">
+                <li className="flex items-start">
+                  <Leaf className="h-5 w-5 text-bonsai-olive mr-2 mt-0.5" />
+                  <span>Achieve carbon neutrality in all operations by 2028</span>
+                </li>
+                <li className="flex items-start">
+                  <Leaf className="h-5 w-5 text-bonsai-olive mr-2 mt-0.5" />
+                  <span>Eliminate all single-use plastics from our packaging by 2026</span>
+                </li>
+                <li className="flex items-start">
+                  <Leaf className="h-5 w-5 text-bonsai-olive mr-2 mt-0.5" />
+                  <span>Expand our community farming network to 200+ families</span>
+                </li>
+                <li className="flex items-start">
+                  <Leaf className="h-5 w-5 text-bonsai-olive mr-2 mt-0.5" />
+                  <span>Increase our reforestation initiatives by 50%</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-      </main>
-      <Footer />
-    </div>
+      </div>
+    </SingleLayout>
   );
 };
 

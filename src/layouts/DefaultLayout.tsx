@@ -5,9 +5,9 @@ import Footer from '../components/layout/Footer';
 
 const DefaultLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div className="overflow-x-hidden">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main>
+      <main className="flex-grow">
         {children}
       </main>
       <Footer />

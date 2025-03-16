@@ -25,6 +25,10 @@ import ReviewsPage from "./pages/ReviewsPage";
 import InstructionsPage from "./pages/InstructionsPage";
 import AboutPage from "./pages/AboutPage";
 import ExportProcessPage from "./pages/ExportProcessPage";
+import FAQPage from "./pages/FAQPage";
+import PartnersPage from "./pages/PartnersPage";
+import PressPage from "./pages/PressPage";
+import SustainabilityPage from "./pages/SustainabilityPage";
 
 // Create query client
 const queryClient = new QueryClient();
@@ -50,12 +54,12 @@ const App = () => (
           {/* Content Single Pages */}
           <Route path="/about" element={<SingleLayout section="about"><AboutPage /></SingleLayout>} />
           <Route path="/export-process" element={<SingleLayout section="export-process"><ExportProcessPage /></SingleLayout>} />
-          <Route path="/sustainability" element={<SingleLayout section="sustainability"><SinglePage slug="sustainability" /></SingleLayout>} />
-          <Route path="/faq" element={<SingleLayout section="faq"><SinglePage slug="faq" /></SingleLayout>} />
+          <Route path="/sustainability" element={<SingleLayout section="sustainability"><SustainabilityPage /></SingleLayout>} />
+          <Route path="/faq" element={<SingleLayout section="faq"><FAQPage /></SingleLayout>} />
           <Route path="/testimonials" element={<DefaultLayout><TestimonialsPage /></DefaultLayout>} />
           <Route path="/reviews" element={<DefaultLayout><ReviewsPage /></DefaultLayout>} />
-          <Route path="/partners" element={<SingleLayout section="partners"><SinglePage slug="partners" /></SingleLayout>} />
-          <Route path="/press" element={<SingleLayout section="press"><SinglePage slug="press" /></SingleLayout>} />
+          <Route path="/partners" element={<SingleLayout section="partners"><PartnersPage /></SingleLayout>} />
+          <Route path="/press" element={<SingleLayout section="press"><PressPage /></SingleLayout>} />
           <Route path="/contact" element={<SingleLayout section="contact"><SinglePage slug="contact" /></SingleLayout>} />
           
           {/* Legal Pages */}

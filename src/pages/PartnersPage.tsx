@@ -1,131 +1,113 @@
 
 import React from 'react';
+import SingleLayout from '../layouts/SingleLayout';
 import SectionTitle from '../components/ui/SectionTitle';
-import { Building2, Users, Truck, Globe2, Database, Leaf } from 'lucide-react';
+import { Building, Users, Leaf, Award, ShieldCheck, Globe } from 'lucide-react';
 
 const PartnersPage = () => {
   const partnerCategories = [
     {
-      icon: <Building2 size={32} className="text-bonsai-olive" />,
-      title: "Nurseries & Growers",
-      description: "We partner with local Indonesian nurseries and growers who share our commitment to sustainable cultivation practices and exceptional quality.",
+      title: "Nursery Partners",
+      icon: <Leaf className="h-10 w-10 text-bonsai-olive mb-3" />,
+      description: "Local Indonesian nurseries that grow and develop premium bonsai specimens.",
       partners: [
-        "Bogor Botanical Gardens",
-        "Cipanas Horticultural Center",
-        "Bandung Plant Collective",
-        "Sukabumi Traditional Growers Association"
+        { name: "Bogor Botanical Garden", focus: "Research & Conservation" },
+        { name: "Jayapura Tropical Nursery", focus: "Rare Species Cultivation" },
+        { name: "West Java Bonsai Collective", focus: "Traditional Techniques" },
+        { name: "Sumatran Rainforest Initiative", focus: "Sustainable Forestry" },
+        { name: "Bandung Horticultural Society", focus: "Plant Pathology & Health" }
       ]
     },
     {
-      icon: <Truck size={32} className="text-bonsai-olive" />,
-      title: "Logistics Partners",
-      description: "Our trusted logistics partners ensure secure, efficient transportation of plants worldwide, with specialized knowledge in handling live botanical products.",
+      title: "Export Partners",
+      icon: <Globe className="h-10 w-10 text-bonsai-olive mb-3" />,
+      description: "Shipping and logistics partners ensuring safe delivery worldwide.",
       partners: [
-        "EcoPack Indonesia",
-        "Global Plant Transport",
-        "AeroCargo Botanicals",
-        "PlantSafe Shipping Solutions"
+        { name: "Pacific Air Cargo", focus: "APAC Region Shipping" },
+        { name: "EuroPlant Logistics", focus: "European Market Specialist" },
+        { name: "Global Botanical Transport", focus: "Temperature-Controlled Shipping" },
+        { name: "AeroBotanical", focus: "Express Air Freight" },
+        { name: "Plant Secure Logistics", focus: "Tracking & Insurance" }
       ]
     },
     {
-      icon: <Globe2 size={32} className="text-bonsai-olive" />,
+      title: "Certification Bodies",
+      icon: <ShieldCheck className="h-10 w-10 text-bonsai-olive mb-3" />,
+      description: "Organizations that certify our sustainable and legal practices.",
+      partners: [
+        { name: "Indonesian Plant Authority", focus: "Phytosanitary Certification" },
+        { name: "CITES Compliance Board", focus: "Protected Species Monitoring" },
+        { name: "Sustainable Plant Trade Coalition", focus: "Ethical Standards" },
+        { name: "Global Botanical Ethics Council", focus: "Fair Trade Practices" },
+        { name: "Green Export Initiative", focus: "Carbon-Neutral Shipping" }
+      ]
+    },
+    {
       title: "International Distributors",
-      description: "We work with select distributors globally who maintain our high standards of plant care and customer service.",
+      icon: <Building className="h-10 w-10 text-bonsai-olive mb-3" />,
+      description: "Retail and wholesale partners around the world.",
       partners: [
-        "European Bonsai Collective",
-        "North American Plant Importers Association",
-        "Pacific Rim Botanical Exchange",
-        "Middle East Garden Centers Alliance"
-      ]
-    },
-    {
-      icon: <Database size={32} className="text-bonsai-olive" />,
-      title: "Research Institutions",
-      description: "Collaborations with botanical research institutions help us stay at the forefront of plant cultivation techniques and conservation efforts.",
-      partners: [
-        "Indonesian Institute of Botanical Sciences",
-        "Tropical Plant Research Center",
-        "Agricultural University of Bogor",
-        "International Bonsai Preservation Society"
-      ]
-    },
-    {
-      icon: <Leaf size={32} className="text-bonsai-olive" />,
-      title: "Conservation Organizations",
-      description: "We actively support and partner with organizations dedicated to plant conservation and sustainable agricultural practices.",
-      partners: [
-        "Indonesian Rainforest Trust",
-        "Botanical Diversity Initiative",
-        "Southeast Asian Plant Conservation Network",
-        "Traditional Plant Knowledge Foundation"
-      ]
-    },
-    {
-      icon: <Users size={32} className="text-bonsai-olive" />,
-      title: "Community Programs",
-      description: "Our community partnerships empower local farmers and artisans, ensuring economic benefits reach those who contribute to our supply chain.",
-      partners: [
-        "Java Rural Development Program",
-        "Women in Horticulture Initiative",
-        "Youth Botanical Training Program",
-        "Traditional Plant Knowledge Preservation Society"
+        { name: "European Bonsai Alliance", focus: "EU Distribution Network" },
+        { name: "North American Bonsai Consortium", focus: "US & Canada Markets" },
+        { name: "Asia-Pacific Plant Importers", focus: "Regional Distribution" },
+        { name: "Oceania Botanical Group", focus: "Australia & NZ Market" },
+        { name: "Global Botanical Retailers Association", focus: "Worldwide Retail Network" }
       ]
     }
   ];
 
   return (
-    <div className="min-h-screen">
+    <SingleLayout section="partners">
       <div className="container-custom mx-auto py-12">
         <SectionTitle
           subtitle="OUR PARTNERS"
-          title="Working Together for Excellence"
-          description="We collaborate with a diverse network of partners who share our commitment to quality, sustainability, and exceptional plant care."
+          title="Working Together for Quality"
+          description="At Indo Cipanas Bonsai, we believe in the power of collaboration. Our network of trusted partners helps us maintain the highest standards of quality, sustainability, and service in everything we do."
         />
         
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10">
           {partnerCategories.map((category, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-md overflow-hidden">
-              <div className="p-6">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-full bg-bonsai-wheat/30 flex items-center justify-center mr-4">
-                    {category.icon}
-                  </div>
-                  <h3 className="text-xl font-playfair font-bold text-bonsai-dark-green">{category.title}</h3>
+            <div key={index} className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+              <div className="p-8">
+                <div className="flex flex-col items-center text-center mb-6">
+                  {category.icon}
+                  <h3 className="text-2xl font-playfair font-bold text-bonsai-dark-green">{category.title}</h3>
+                  <p className="text-gray-600 mt-2">{category.description}</p>
                 </div>
                 
-                <p className="text-gray-600 mb-6">{category.description}</p>
-                
-                <div className="border-t border-gray-100 pt-4">
-                  <h4 className="text-sm font-semibold uppercase tracking-wider text-bonsai-olive mb-3">Featured Partners</h4>
-                  <ul className="space-y-2">
-                    {category.partners.map((partner, idx) => (
-                      <li key={idx} className="flex items-center">
-                        <div className="w-2 h-2 rounded-full bg-bonsai-wheat mr-2"></div>
-                        <span className="text-gray-700">{partner}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <div className="space-y-4">
+                  {category.partners.map((partner, idx) => (
+                    <div key={idx} className="flex items-center p-3 border border-gray-200 rounded-md hover:border-bonsai-olive hover:bg-bonsai-beige/10 transition-colors">
+                      <div className="ml-3">
+                        <h4 className="font-medium text-bonsai-dark-green">{partner.name}</h4>
+                        <p className="text-sm text-gray-500">{partner.focus}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           ))}
         </div>
         
-        <div className="mt-16 text-center">
-          <h3 className="text-2xl font-playfair font-bold text-bonsai-dark-green mb-4">Become a Partner</h3>
-          <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-            We're always looking for new partnerships that align with our values of quality, sustainability, and exceptional plant care.
-            If you're interested in partnering with Indo Cipanas Bonsai, we'd love to hear from you.
-          </p>
-          <a 
-            href="/contact" 
-            className="inline-flex items-center px-6 py-3 bg-bonsai-olive text-white rounded-md hover:bg-bonsai-dark-green transition-colors"
-          >
-            Contact Us About Partnerships
-          </a>
+        <div className="mt-16 bg-bonsai-beige/20 rounded-xl p-8 border border-bonsai-beige">
+          <div className="flex flex-col md:flex-row items-center">
+            <Users className="h-16 w-16 text-bonsai-olive mb-6 md:mb-0 md:mr-8" />
+            <div>
+              <h3 className="text-2xl font-playfair font-bold text-bonsai-dark-green mb-3">Become a Partner</h3>
+              <p className="text-gray-700 mb-4">
+                We're always looking to expand our network of partners who share our commitment to quality, 
+                sustainability, and exceptional service. Whether you're a nursery, retailer, or logistics 
+                provider, we'd love to explore collaboration opportunities.
+              </p>
+              <Link to="/contact" className="inline-flex items-center px-5 py-2.5 bg-bonsai-olive text-white rounded-md hover:bg-bonsai-dark-green transition-colors">
+                Contact for Partnership
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </SingleLayout>
   );
 };
 

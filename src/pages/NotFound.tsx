@@ -1,9 +1,8 @@
 
 import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
-import Navbar from '../components/layout/Navbar';
-import Footer from '../components/layout/Footer';
 import { Home, Search, HelpCircle, MapPin, Book, Leaf } from 'lucide-react';
+import DefaultLayout from "../layouts/DefaultLayout";
 
 const NotFound = () => {
   const location = useLocation();
@@ -26,10 +25,8 @@ const NotFound = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-      
-      <main className="flex-grow flex items-center justify-center py-20">
+    <DefaultLayout>
+      <div className="flex-grow flex items-center justify-center py-20">
         <div className="container-custom mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center bg-white rounded-lg p-8 shadow-sm">
             <h1 className="text-6xl font-playfair font-bold text-bonsai-dark-green mb-4">404</h1>
@@ -75,10 +72,8 @@ const NotFound = () => {
             </div>
           </div>
         </div>
-      </main>
-      
-      <Footer />
-    </div>
+      </div>
+    </DefaultLayout>
   );
 };
 

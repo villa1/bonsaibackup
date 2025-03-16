@@ -20,9 +20,9 @@ const SingleLayout: React.FC<SingleLayoutProps> = ({ children, section }) => {
   };
 
   return (
-    <div className="pt-24">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="bg-bonsai-beige/50 py-3">
+      <div className="pt-24 bg-bonsai-beige/50 py-3">
         <div className="container-custom mx-auto">
           <div className="flex items-center text-sm text-gray-600">
             <Link to="/" className="hover:text-bonsai-dark-green transition-colors">Home</Link>
@@ -41,7 +41,7 @@ const SingleLayout: React.FC<SingleLayoutProps> = ({ children, section }) => {
           </div>
         </div>
       </div>
-      <main>
+      <main className="flex-grow">
         {children}
       </main>
       <Footer />
