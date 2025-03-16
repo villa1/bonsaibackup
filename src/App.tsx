@@ -29,6 +29,11 @@ import FAQPage from "./pages/FAQPage";
 import PartnersPage from "./pages/PartnersPage";
 import PressPage from "./pages/PressPage";
 import SustainabilityPage from "./pages/SustainabilityPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import TermsOfServicePage from "./pages/TermsOfServicePage";
+import CookiePolicyPage from "./pages/CookiePolicyPage";
+import AccessibilityPage from "./pages/AccessibilityPage";
+import ReturnPolicyPage from "./pages/ReturnPolicyPage";
 
 // Create query client
 const queryClient = new QueryClient();
@@ -44,8 +49,8 @@ const App = () => (
           <Route path="/" element={<DefaultLayout><HomePage /></DefaultLayout>} />
           
           {/* Blog Pages */}
-          <Route path="/blog" element={<ListLayout section="blog"><BlogPage /></ListLayout>} />
-          <Route path="/blog/:slug" element={<SingleLayout section="blog"><BlogPostPage /></SingleLayout>} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
           
           {/* Content Section List Pages */}
           <Route path="/services" element={<ListLayout section="services"><ListPage section="services" /></ListLayout>} />
@@ -58,16 +63,16 @@ const App = () => (
           <Route path="/faq" element={<SingleLayout section="faq"><FAQPage /></SingleLayout>} />
           <Route path="/testimonials" element={<DefaultLayout><TestimonialsPage /></DefaultLayout>} />
           <Route path="/reviews" element={<DefaultLayout><ReviewsPage /></DefaultLayout>} />
-          <Route path="/partners" element={<SingleLayout section="partners"><PartnersPage /></SingleLayout>} />
+          <Route path="/partners" element={<PartnersPage />} />
           <Route path="/press" element={<SingleLayout section="press"><PressPage /></SingleLayout>} />
           <Route path="/contact" element={<SingleLayout section="contact"><SinglePage slug="contact" /></SingleLayout>} />
           
           {/* Legal Pages */}
-          <Route path="/privacy-policy" element={<SingleLayout section="legal"><SinglePage slug="privacy-policy" /></SingleLayout>} />
-          <Route path="/terms-of-service" element={<SingleLayout section="legal"><SinglePage slug="terms-of-service" /></SingleLayout>} />
-          <Route path="/cookie-policy" element={<SingleLayout section="legal"><SinglePage slug="cookie-policy" /></SingleLayout>} />
-          <Route path="/accessibility" element={<SingleLayout section="legal"><SinglePage slug="accessibility" /></SingleLayout>} />
-          <Route path="/return-policy" element={<SingleLayout section="legal"><SinglePage slug="return-policy" /></SingleLayout>} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+          <Route path="/cookie-policy" element={<CookiePolicyPage />} />
+          <Route path="/accessibility" element={<AccessibilityPage />} />
+          <Route path="/return-policy" element={<ReturnPolicyPage />} />
           
           {/* Sitemap */}
           <Route path="/sitemap" element={<SingleLayout section="sitemap"><SitemapPage /></SingleLayout>} />

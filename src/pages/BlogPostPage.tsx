@@ -1,8 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import Navbar from '../components/layout/Navbar';
-import Footer from '../components/layout/Footer';
 import { fetchBlogPosts, type BlogPost } from '../utils/blog';
 import BlogPostHeader from '../components/blog/BlogPostHeader';
 import BlogPostMeta from '../components/blog/BlogPostMeta';
@@ -10,6 +8,7 @@ import MarkdownContent from '../components/blog/MarkdownContent';
 import SocialShareButtons from '../components/blog/SocialShareButtons';
 import RelatedPosts from '../components/blog/RelatedPosts';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
+import SingleLayout from '../layouts/SingleLayout';
 
 const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -50,43 +49,37 @@ const BlogPostPage = () => {
   
   if (loading) {
     return (
-      <div className="pt-24">
-        <Navbar />
+      <SingleLayout section="blog">
         <div className="container-custom mx-auto py-12 min-h-screen">
           <LoadingSpinner />
         </div>
-        <Footer />
-      </div>
+      </SingleLayout>
     );
   }
   
   if (!post) return null;
 
   return (
-    <div className="pt-24">
-      <Navbar />
-      <main>
-        <BlogPostHeader post={post} />
-        
-        <div className="container-custom mx-auto -mt-20 relative z-10">
-          <div className="bg-white rounded-xl shadow-xl p-6 md:p-10 mb-16">
-            <BlogPostMeta post={post} />
-            
-            {/* Article content */}
-            <div className="max-w-4xl mx-auto">
-              {post.content && (
-                <MarkdownContent content={post.content} />
-              )}
-              
-              <SocialShareButtons />
-            </div>
-          </div>
+    <SingleLayout section="blog">
+      <BlogPostHeader post={post} />
+      
+      <div className="container-custom mx-auto -mt-20 relative z-10">
+        <div className="bg-white rounded-xl shadow-xl p-6 md:p-10 mb-16">
+          <BlogPostMeta post={post} />
           
-          <RelatedPosts posts={relatedPosts} />
+          {/* Article content */}
+          <div className="max-w-4xl mx-auto">
+            {post.content && (
+              <MarkdownContent content={post.content} />
+            )}
+            
+            <SocialShareButtons />
+          </div>
         </div>
-      </main>
-      <Footer />
-    </div>
+        
+        <RelatedPosts posts={relatedPosts} />
+      </div>
+    </SingleLayout>
   );
 };
 
