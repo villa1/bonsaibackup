@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, FileText, Layout, List, Newspaper, Copy, Book, Info } from 'lucide-react';
@@ -540,7 +541,7 @@ const blogFiles = [
                         </tr>
                         <tr>
                           <td className="border border-gray-300 px-4 py-2">Blockquote</td>
-                          <td className="border border-gray-300 px-4 py-2"><code>> blockquote text</code></td>
+                          <td className="border border-gray-300 px-4 py-2"><code>{`> blockquote text`}</code></td>
                         </tr>
                         <tr>
                           <td className="border border-gray-300 px-4 py-2">Ordered List</td>
