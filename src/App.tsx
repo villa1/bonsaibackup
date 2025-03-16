@@ -23,6 +23,8 @@ import XmlSitemapPage from "./pages/XmlSitemapPage";
 import TestimonialsPage from "./pages/TestimonialsPage";
 import ReviewsPage from "./pages/ReviewsPage";
 import InstructionsPage from "./pages/InstructionsPage";
+import AboutPage from "./pages/AboutPage";
+import ExportProcessPage from "./pages/ExportProcessPage";
 
 // Create query client
 const queryClient = new QueryClient();
@@ -43,11 +45,11 @@ const App = () => (
           
           {/* Content Section List Pages */}
           <Route path="/services" element={<ListLayout section="services"><ListPage section="services" /></ListLayout>} />
-          <Route path="/services-catalog" element={<ListLayout section="services"><ListPage section="services-catalog" /></ListLayout>} />
+          <Route path="/services-catalog" element={<ListLayout section="services-catalog"><ListPage section="services-catalog" /></ListLayout>} />
           
           {/* Content Single Pages */}
-          <Route path="/about" element={<SingleLayout section="about"><SinglePage slug="about" /></SingleLayout>} />
-          <Route path="/export-process" element={<SingleLayout section="export-process"><SinglePage slug="export-process" /></SingleLayout>} />
+          <Route path="/about" element={<SingleLayout section="about"><AboutPage /></SingleLayout>} />
+          <Route path="/export-process" element={<SingleLayout section="export-process"><ExportProcessPage /></SingleLayout>} />
           <Route path="/sustainability" element={<SingleLayout section="sustainability"><SinglePage slug="sustainability" /></SingleLayout>} />
           <Route path="/faq" element={<SingleLayout section="faq"><SinglePage slug="faq" /></SingleLayout>} />
           <Route path="/testimonials" element={<DefaultLayout><TestimonialsPage /></DefaultLayout>} />

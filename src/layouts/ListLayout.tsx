@@ -5,7 +5,6 @@ import Footer from '../components/layout/Footer';
 import { ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// This acts like Hugo's list.html template
 interface ListLayoutProps {
   children: React.ReactNode;
   section: string;

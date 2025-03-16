@@ -1,13 +1,14 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X, Leaf } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Progress } from "@/components/ui/progress";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const location = useLocation();
 
   // Handle scroll event to change navbar appearance and track reading progress
   useEffect(() => {
@@ -33,6 +34,11 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -62,14 +68,14 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <Link to="/" className="nav-link">Home</Link>
-          <Link to="/services" className="nav-link">Services</Link>
-          <Link to="/services-catalog" className="nav-link">Catalog</Link>
-          <Link to="/about" className="nav-link">About</Link>
-          <Link to="/export-process" className="nav-link">Export Process</Link>
-          <Link to="/sustainability" className="nav-link">Sustainability</Link>
-          <Link to="/blog" className="nav-link">Blog</Link>
-          <Link to="/contact" className="nav-link">Contact</Link>
+          <Link to="/" className={`nav-link ${location.pathname === '/' ? 'text-bonsai-olive font-medium' : ''}`}>Home</Link>
+          <Link to="/services" className={`nav-link ${location.pathname === '/services' ? 'text-bonsai-olive font-medium' : ''}`}>Services</Link>
+          <Link to="/services-catalog" className={`nav-link ${location.pathname === '/services-catalog' ? 'text-bonsai-olive font-medium' : ''}`}>Catalog</Link>
+          <Link to="/about" className={`nav-link ${location.pathname === '/about' ? 'text-bonsai-olive font-medium' : ''}`}>About</Link>
+          <Link to="/export-process" className={`nav-link ${location.pathname === '/export-process' ? 'text-bonsai-olive font-medium' : ''}`}>Export Process</Link>
+          <Link to="/sustainability" className={`nav-link ${location.pathname === '/sustainability' ? 'text-bonsai-olive font-medium' : ''}`}>Sustainability</Link>
+          <Link to="/blog" className={`nav-link ${location.pathname.includes('/blog') ? 'text-bonsai-olive font-medium' : ''}`}>Blog</Link>
+          <Link to="/contact" className={`nav-link ${location.pathname === '/contact' ? 'text-bonsai-olive font-medium' : ''}`}>Contact</Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -85,15 +91,15 @@ const Navbar = () => {
       {/* Mobile Navigation */}
       <div className={`md:hidden ${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'} overflow-hidden transition-all duration-300 ease-in-out bg-white/95 backdrop-blur-md`}>
         <nav className="flex flex-col items-center py-4 space-y-4">
-          <Link to="/" className="nav-link" onClick={closeMenu}>Home</Link>
-          <Link to="/services" className="nav-link" onClick={closeMenu}>Services</Link>
-          <Link to="/services-catalog" className="nav-link" onClick={closeMenu}>Catalog</Link>
-          <Link to="/about" className="nav-link" onClick={closeMenu}>About</Link>
-          <Link to="/export-process" className="nav-link" onClick={closeMenu}>Export Process</Link>
-          <Link to="/sustainability" className="nav-link" onClick={closeMenu}>Sustainability</Link>
-          <Link to="/blog" className="nav-link" onClick={closeMenu}>Blog</Link>
-          <Link to="/contact" className="nav-link" onClick={closeMenu}>Contact</Link>
-          <Link to="/faq" className="nav-link" onClick={closeMenu}>FAQ</Link>
+          <Link to="/" className={`nav-link ${location.pathname === '/' ? 'text-bonsai-olive font-medium' : ''}`} onClick={closeMenu}>Home</Link>
+          <Link to="/services" className={`nav-link ${location.pathname === '/services' ? 'text-bonsai-olive font-medium' : ''}`} onClick={closeMenu}>Services</Link>
+          <Link to="/services-catalog" className={`nav-link ${location.pathname === '/services-catalog' ? 'text-bonsai-olive font-medium' : ''}`} onClick={closeMenu}>Catalog</Link>
+          <Link to="/about" className={`nav-link ${location.pathname === '/about' ? 'text-bonsai-olive font-medium' : ''}`} onClick={closeMenu}>About</Link>
+          <Link to="/export-process" className={`nav-link ${location.pathname === '/export-process' ? 'text-bonsai-olive font-medium' : ''}`} onClick={closeMenu}>Export Process</Link>
+          <Link to="/sustainability" className={`nav-link ${location.pathname === '/sustainability' ? 'text-bonsai-olive font-medium' : ''}`} onClick={closeMenu}>Sustainability</Link>
+          <Link to="/blog" className={`nav-link ${location.pathname.includes('/blog') ? 'text-bonsai-olive font-medium' : ''}`} onClick={closeMenu}>Blog</Link>
+          <Link to="/contact" className={`nav-link ${location.pathname === '/contact' ? 'text-bonsai-olive font-medium' : ''}`} onClick={closeMenu}>Contact</Link>
+          <Link to="/faq" className={`nav-link ${location.pathname === '/faq' ? 'text-bonsai-olive font-medium' : ''}`} onClick={closeMenu}>FAQ</Link>
         </nav>
       </div>
 
