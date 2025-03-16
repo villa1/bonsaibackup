@@ -1,7 +1,5 @@
 
 import { useEffect } from 'react';
-import Navbar from '../components/layout/Navbar';
-import Footer from '../components/layout/Footer';
 import Hero from '../components/home/Hero';
 import About from '../components/home/About';
 import Services from '../components/home/Services';
@@ -49,19 +47,15 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="overflow-x-hidden">
-      <Navbar />
-      <main>
-        <Hero />
-        <Services />
-        <WhyChooseUs />
-        <Process />
-        <About />
-        <Reviews />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <Hero />
+      <Services />
+      <WhyChooseUs />
+      <Process />
+      <About />
+      <Reviews />
+      <Contact />
+    </>
   );
 };
 
