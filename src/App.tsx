@@ -22,6 +22,7 @@ import SitemapPage from "./pages/SitemapPage";
 import XmlSitemapPage from "./pages/XmlSitemapPage";
 import TestimonialsPage from "./pages/TestimonialsPage";
 import ReviewsPage from "./pages/ReviewsPage";
+import InstructionsPage from "./pages/InstructionsPage";
 
 // Create query client
 const queryClient = new QueryClient();
@@ -65,6 +66,9 @@ const App = () => (
           {/* Sitemap */}
           <Route path="/sitemap" element={<SingleLayout section="sitemap"><SitemapPage /></SingleLayout>} />
           <Route path="/sitemap.xml" element={<XmlSitemapPage />} />
+          
+          {/* Admin Instructions */}
+          <Route path="/admin-instructions" element={<DefaultLayout><InstructionsPage /></DefaultLayout>} />
           
           {/* Catch-all 404 */}
           <Route path="*" element={<DefaultLayout><NotFound /></DefaultLayout>} />
